@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Muhammad Hassany | YouTube Thumbnail Designer</title>
+
+  <!-- Preconnect and Resource Hints for Fastest Loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+
+  <!-- Preload Critical Hero Image (LCP Optimization) -->
+  <link rel="preload" as="image" href="https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792496111/Artboard_1_n14d0d.jpg" fetchpriority="high" />
+
+  <!-- Google Fonts: Poppins (Bold, ExtraBold, Black & Italic) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&amp;display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-yellow: #ffd400;
+      --primary-yellow-hover: #ffe14d;
+      --accent-red: #ff0d1b;
+      --accent-red-glow: rgba(255, 13, 27, 0.45);
+      --bg-dark: #000000;
+      --glass-bg: rgba(255, 255, 255, 0.12);
+      --glass-bg-hover: rgba(255, 255, 255, 0.22);
+      --glass-border: rgba(255, 255, 255, 0.22);
+      --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-dark);
+      font-family: var(--font-main);
+      color: #fff;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      -webkit-user-drag: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* ==========================================================================
+       HERO TOP SECTION
+       ========================================================================== */
+    .hero-top {
+      position: relative;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1280 / 610;
+      min-height: 440px;
+    }
+
+    @media (max-width: 680px) {
+      .hero-top {
+        aspect-ratio: auto;
+        min-height: 500px;
+        padding: 40px 16px;
+      }
+    }
+
+    .hero-top-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-top::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.4) 85%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-top-content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: 860px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .hero-headline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: clamp(14px, 2.5vw, 24px);
+    }
+
+    .hero-headline-top {
+      font-size: clamp(26px, 5.2vw, 64px);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0,0,0,0.9);
+      opacity: 0;
+      transform: translateY(-24px);
+      animation: heroSlideDown 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.15s;
+    }
+
+    .hero-headline-accent {
+      font-size: clamp(30px, 6.2vw, 78px);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--accent-red);
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 0 25px var(--accent-red-glow), 0 4px 20px rgba(0, 0, 0, 0.9);
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+      animation: heroPunchIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(18px, 4.5vw, 54px);
+      margin-bottom: clamp(18px, 3vw, 30px);
+      width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.45s;
+    }
+
+    .stat-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .stat-number {
+      font-size: clamp(14px, 2.3vw, 24px);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      letter-spacing: -0.2px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      white-space: nowrap;
+    }
+
+    .stat-label {
+      font-size: clamp(11px, 1.5vw, 16px);
+      font-weight: 800;
+      color: var(--accent-red);
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px var(--accent-red-glow);
+      white-space: nowrap;
+    }
+
+    .hero-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-yellow);
+      color: #000;
+      font-size: clamp(13px, 1.7vw, 17px);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: clamp(10px, 1.5vw, 15px) clamp(24px, 3.8vw, 44px);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(255, 212, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: heroBtnEntrance 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.65s;
+    }
+
+    .hero-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(25deg);
+      animation: btnShimmer 4s infinite 1.5s;
+      pointer-events: none;
+    }
+
+    .hero-btn:hover {
+      background: var(--primary-yellow-hover);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(255, 212, 0, 0.5), 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-btn:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow: 0 4px 12px rgba(255, 212, 0, 0.3);
+    }
+
+    @keyframes heroSlideDown {
+      0% { opacity: 0; transform: translateY(-24px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroPunchIn {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes heroFadeSlideUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroBtnEntrance {
+      0% { opacity: 0; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes btnShimmer {
+      0% { left: -60%; }
+      25% { left: 140%; }
+      100% { left: 140%; }
+    }
+
+    /* ==========================================================================
+       PORTFOLIO & FOOTER MEDIA SECTIONS
+       ========================================================================== */
+    .portfolio img,
+    .footer-hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    /* ==========================================================================
+       WALL OF WINS (INFINITE SLOW-SCROLLING PROOF MOSAIC)
+       ========================================================================== */
+    .wall-of-wins {
+      position: relative;
+      background: #000000;
+      padding: clamp(50px, 6vw, 85px) 16px;
+      overflow: hidden;
+    }
+
+    /* Subtle ambient center glow */
+    .wall-of-wins::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(850px, 92vw);
+      height: 380px;
+      background: radial-gradient(circle, rgba(255, 212, 0, 0.05) 0%, rgba(255, 13, 27, 0.03) 50%, transparent 75%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wall-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Section Header */
+    .wall-header {
+      text-align: center;
+      margin-bottom: clamp(26px, 3.5vw, 42px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .wall-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 212, 0, 0.08);
+      border: 1px solid rgba(255, 212, 0, 0.3);
+      color: var(--primary-yellow);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      box-shadow: 0 0 16px rgba(255, 212, 0, 0.1);
+    }
+
+    .wall-title {
+      font-size: clamp(28px, 4vw, 50px);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+    }
+
+    .wall-subtitle {
+      font-size: clamp(13.5px, 1.5vw, 16px);
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.55;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* Compact infinite scrolling viewport */
+    .wall-marquee-wrapper {
+      position: relative;
+      width: 100%;
+      height: clamp(440px, 58vh, 560px);
+      overflow: hidden;
+      border-radius: 16px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+
+    /* Edge Gradient Fades */
+    .wall-fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 70px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .wall-fade-top {
+      top: 0;
+      background: linear-gradient(to bottom, #000 0%, transparent 100%);
+    }
+
+    .wall-fade-bottom {
+      bottom: 0;
+      background: linear-gradient(to top, #000 0%, transparent 100%);
+    }
+
+    /* Multi-column grid */
+    .wall-columns {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      height: 100%;
+      width: 100%;
+    }
+
+    @media (max-width: 1080px) {
+      .wall-columns {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .wall-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    /* Individual Column */
+    .wall-col {
+      overflow: hidden;
+      position: relative;
+      height: 100%;
+    }
+
+    /* The moving track */
+    .wall-col-track {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      animation: scrollUpSlow 38s linear infinite;
+      will-change: transform;
+    }
+
+    /* Organic speed variations across columns */
+    .wall-col:nth-child(2) .wall-col-track {
+      animation-duration: 44s;
+    }
+    .wall-col:nth-child(3) .wall-col-track {
+      animation-duration: 35s;
+    }
+    .wall-col:nth-child(4) .wall-col-track {
+      animation-duration: 41s;
+    }
+
+    /* STOP SCROLLING ON HOVER: Only the hovered column pauses, others keep scrolling */
+    .wall-col:hover .wall-col-track {
+      animation-play-state: paused;
+    }
+
+    /* Seamless infinite loop */
+    @keyframes scrollUpSlow {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-50%);
+      }
+    }
+
+    /* Individual Proof Screenshot Card */
+    .wall-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0d0d0e;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .wall-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* Hover effect: stops (via parent) and becomes bigger just a little bit */
+    .wall-card:hover {
+      transform: scale(1.045);
+      z-index: 15;
+      border-color: rgba(255, 212, 0, 0.45);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 212, 0, 0.15);
+    }
+
+    /* ==========================================================================
+       MY PROCESS SECTION
+       ========================================================================== */
+    .process-section {
+      position: relative;
+      background: #000000;
+      padding: clamp(60px, 7vw, 100px) 24px;
+      overflow: hidden;
+    }
+
+    .process-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Section Header */
+    .process-header {
+      text-align: center;
+      margin-bottom: clamp(36px, 5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .process-header.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .process-tag {
+      display: block;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .process-title {
+      font-size: clamp(24px, 4vw, 46px);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+    }
+
+    /* Process 4-Cards Grid */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      width: 100%;
+    }
+
+    @media (max-width: 1100px) {
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    /* Process Card */
+    .process-card {
+      background: #0d0d0f;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: clamp(20px, 2.2vw, 26px) clamp(16px, 2vw, 22px);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.35s ease,
+                  opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transform: translateY(35px);
+      cursor: default;
+    }
+
+    .process-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .process-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 13, 27, 0.45);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 13, 27, 0.15);
+    }
+
+    /* Staggered entrance delays */
+    .process-grid .process-card:nth-child(1) { transition-delay: 0.1s; }
+    .process-grid .process-card:nth-child(2) { transition-delay: 0.22s; }
+    .process-grid .process-card:nth-child(3) { transition-delay: 0.34s; }
+    .process-grid .process-card:nth-child(4) { transition-delay: 0.46s; }
+
+    /* Red Number Badge */
+    .process-badge {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      background: var(--accent-red);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(255, 13, 27, 0.45);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .process-body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .process-card-title {
+      color: #ffffff;
+      font-size: clamp(13px, 1.15vw, 15px);
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      line-height: 1.25;
+    }
+
+    .process-card-desc {
+      color: rgba(255, 255, 255, 0.62);
+      font-size: clamp(10.5px, 0.95vw, 11.5px);
+      line-height: 1.55;
+      font-weight: 500;
+      letter-spacing: 0.25px;
+      text-transform: uppercase;
+    }
+
+    .highlight-shine {
+      color: var(--primary-yellow);
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(255, 212, 0, 0.35);
+    }
+
+    /* ==========================================================================
+       WHAT YOU'LL GET VS WHAT YOU WON'T GET SECTION
+       ========================================================================== */
+    .expectations-section {
+      position: relative;
+      background: #000000;
+      padding: clamp(60px, 8vw, 100px) 24px;
+      overflow: hidden;
+    }
+
+    .expectations-container {
+      max-width: 1260px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .expectations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 48px);
+      align-items: stretch;
+    }
+
+    @media (max-width: 880px) {
+      .expectations-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .expectation-col {
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .expectation-col.col-positive {
+      transition-delay: 0.1s;
+    }
+
+    .expectation-col.col-negative {
+      transition-delay: 0.25s;
+    }
+
+    .expectation-col.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .col-title {
+      font-size: clamp(24px, 3.2vw, 36px);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+
+    .title-positive {
+      color: #ffffff;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.8);
+    }
+
+    .title-negative {
+      color: var(--accent-red);
+      font-style: italic;
+      text-shadow: 0 0 20px var(--accent-red-glow), 0 4px 18px rgba(0, 0, 0, 0.8);
+    }
+
+    .expectation-box {
+      border-radius: 20px;
+      padding: clamp(26px, 3vw, 38px) clamp(20px, 2.5vw, 32px);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      height: 100%;
+      background: #080809;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .box-positive {
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .box-positive:hover {
+      border-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 255, 255, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .box-negative {
+      border: 1.5px solid var(--accent-red);
+    }
+
+    .box-negative:hover {
+      border-color: #ff2a37;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px var(--accent-red-glow);
+      transform: translateY(-3px);
+    }
+
+    .expectation-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .item-icon {
+      font-size: 22px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .icon-positive {
+      color: #22c55e;
+      text-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+    }
+
+    .icon-negative {
+      color: var(--accent-red);
+      text-shadow: 0 0 12px var(--accent-red-glow);
+    }
+
+    .item-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .item-title {
+      color: #ffffff;
+      font-size: clamp(14px, 1.25vw, 16.5px);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.25;
+      letter-spacing: 0.2px;
+    }
+
+    .item-desc {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: clamp(10.5px, 0.95vw, 11.5px);
+      line-height: 1.55;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+
+    .box-callout {
+      margin-top: auto;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .callout-sub {
+      color: #ffffff;
+      font-size: clamp(13px, 1.2vw, 16px);
+      font-weight: 800;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .callout-main {
+      font-size: clamp(16px, 1.8vw, 22px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+
+    .callout-positive .callout-main {
+      color: var(--primary-yellow);
+      text-shadow: 0 0 15px rgba(255, 212, 0, 0.4);
+    }
+
+    .callout-negative .callout-main {
+      color: #ffffff;
+    }
+
+    .badge-highlight {
+      background: var(--primary-yellow);
+      color: #000000;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 900;
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       BOTTOM OVERLAY & PROFESSIONAL BUTTONS
+       ========================================================================== */
+    .footer-hero {
+      position: relative;
+      width: 100%;
+      background: #000000;
+      padding: clamp(50px, 7vw, 80px) 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-overlay {
+      position: relative;
+      left: auto;
+      top: auto;
+      transform: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      width: min(440px, 92%);
+      z-index: 10;
+      margin: 0 auto;
+    }
+
+    .footer-book-btn {
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      padding: 15px 24px;
+      box-shadow: 0 6px 24px rgba(255, 212, 0, 0.4);
+    }
+
+    /* ==========================================================================
+       SITE COPYRIGHT FOOTER
+       ========================================================================== */
+    .site-footer-copyright {
+      text-align: center;
+      padding: 22px 16px;
+      background: #000000;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+    }
+
+    .site-footer-copyright p {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 11.5px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .btn-action {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border-radius: 14px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      background: var(--glass-bg-hover);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-action:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary-cta {
+      padding: 15px 22px;
+      background: var(--primary-yellow);
+      color: #000;
+      border: 1px solid var(--primary-yellow);
+      font-size: 15px;
+      font-weight: 800;
+      border-radius: 14px;
+      box-shadow: 0 6px 22px rgba(255, 212, 0, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary-cta i {
+      font-size: 17px;
+    }
+
+    .btn-primary-cta:hover {
+      background: var(--primary-yellow-hover);
+      border-color: var(--primary-yellow-hover);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 28px rgba(255, 212, 0, 0.45);
+      color: #000;
+    }
+
+    .btn-dual-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn-proof {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .btn-proof i {
+      color: var(--primary-yellow);
+      font-size: 15px;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-proof:hover i {
+      transform: scale(1.15);
+    }
+
+    .btn-contact {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-whatsapp:hover {
+      border-color: rgba(37, 211, 102, 0.6);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+    }
+
+    .btn-whatsapp:hover i {
+      color: #25D366;
+    }
+
+    .btn-email:hover {
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .footer-overlay {
+        top: 68%;
+        gap: 10px;
+      }
+
+      .btn-action {
+        padding: 12px 14px;
+        font-size: 13.5px;
+      }
+
+      .btn-primary-cta {
+        padding: 14px 18px;
+        font-size: 14.5px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .footer-overlay {
+        top: 70%;
+        width: 94%;
+        gap: 8px;
+      }
+
+      .btn-action {
+        padding: 11px 12px;
+        font-size: 13px;
+        border-radius: 12px;
+      }
+
+      .btn-primary-cta {
+        padding: 13px 16px;
+        font-size: 13.5px;
+        border-radius: 12px;
+      }
+    }
+
+    /* ==========================================================================
+       MODAL STYLING
+       ========================================================================== */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: modalFadeIn 0.25s ease forwards;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-box {
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      width: min(95vw, 1100px);
+      height: min(90vh, 900px);
+      overflow: auto;
+      padding: 16px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .close {
+      position: sticky;
+      top: 0;
+      float: right;
+      background: var(--primary-yellow);
+      color: #000;
+      border: none;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: background 0.2s, transform 0.2s;
+      z-index: 10;
+    }
+
+    .close:hover {
+      background: var(--primary-yellow-hover);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =========================================================================
+       1. TOP HERO HEADER
+       ========================================================================= -->
+  <section class="hero-top">
+    <img 
+      class="hero-top-bg" 
+      src="https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792496111/Artboard_1_n14d0d.jpg" 
+      alt="Stop The Scroll - Win The Click" 
+      fetchpriority="high"
+      decoding="async"
+    />
+    
+    <div class="hero-top-content">
+      <div class="hero-headline">
+        <h1 class="hero-headline-top">STOP THE SCROLL..</h1>
+        <h2 class="hero-headline-accent">WIN THE CLICK</h2>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-col">
+          <span class="stat-number">+20,000,000</span>
+          <span class="stat-label">VIEWS</span>
+        </div>
+        <div class="stat-col">
+          <span class="stat-number">90K-100K-200K</span>
+          <span class="stat-label">SUBS CHANNELS</span>
+        </div>
+        <div class="stat-col">
+          <span class="stat-number">UP TO %13</span>
+          <span class="stat-label">CTR</span>
+        </div>
+      </div>
+
+      <a class="hero-btn" href="https://calendly.com/muhammadhassany/30min" target="_blank" rel="noopener noreferrer">
+        BOOK YOUR CALL NOW
+      </a>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       2. MAIN PORTFOLIO DISPLAY
+       ========================================================================= -->
+  <section class="portfolio">
+    <img 
+      src="https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792458773/Mainn_k6d0id.jpg" 
+      alt="YouTube Thumbnail Portfolio Work" 
+      loading="lazy" 
+      decoding="async" 
+    />
+  </section>
+
+  <!-- =========================================================================
+       3. WALL OF WINS (COMPACT INFINITE SLOW-SCROLLING PROOF MOSAIC)
+       ========================================================================= -->
+  <section class="wall-of-wins" id="wall-of-wins">
+    <div class="wall-container">
+      <div class="wall-header">
+        <span class="wall-tag"><i class="fa-solid fa-trophy"></i> Wall of Wins</span>
+        <h2 class="wall-title">Here are the receipts.</h2>
+        <p class="wall-subtitle">Real screenshots. Real analytics. Every single one from a client channel we manage.</p>
+      </div>
+
+      <!-- Compact Scrolling Window with Top/Bottom Gradient Fades -->
+      <div class="wall-marquee-wrapper" id="wallMarqueeWrapper">
+        <div class="wall-fade wall-fade-top"></div>
+        <div class="wall-columns" id="wallColumns">
+          <!-- Multi-column tracks generated dynamically from array below -->
+        </div>
+        <div class="wall-fade wall-fade-bottom"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. MY PROCESS (FROM IDEA TO CLICK-WORTHY THUMBNAIL)
+       ========================================================================= -->
+  <section class="process-section" id="process">
+    <div class="process-container">
+      
+      <!-- Section Header -->
+      <div class="process-header">
+        <span class="process-tag">MY PROCESS</span>
+        <h2 class="process-title">FROM IDEA TO CLICK-WORTHY THUMBNAIL.</h2>
+      </div>
+
+      <!-- Process 4-Cards Grid -->
+      <div class="process-grid">
+        
+        <!-- Step 1 -->
+        <div class="process-card">
+          <div class="process-badge">1</div>
+          <div class="process-body">
+            <h3 class="process-card-title">BRIEF &amp; RESEARCH</h3>
+            <p class="process-card-desc">I UNDERSTAND YOUR VIDEO, AUDIENCE, AND GOALS TO FIND THE RIGHT VISUAL DIRECTION.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="process-card">
+          <div class="process-badge">2</div>
+          <div class="process-body">
+            <h3 class="process-card-title">CONCEPT &amp; DESIGN</h3>
+            <p class="process-card-desc">I TURN YOUR IDEAS INTO BOLD, EYE-CATCHING THUMBNAILS THAT GRAB ATTENTION.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-card">
+          <div class="process-badge">3</div>
+          <div class="process-body">
+            <h3 class="process-card-title">POLISH &amp; REFINE</h3>
+            <p class="process-card-desc">I PERFECT THE COLORS, COMPOSITION, AND DETAILS TO MAKE EVERY ELEMENT STAND OUT.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="process-card">
+          <div class="process-badge">4</div>
+          <div class="process-body">
+            <h3 class="process-card-title">DELIVER &amp; IMPRESS</h3>
+            <p class="process-card-desc">YOU GET A HIGH-QUALITY, YOUTUBE-READY THUMBNAIL DESIGNED TO MAKE YOUR CONTENT <span class="highlight-shine">SHINE.</span></p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. WHAT YOU'LL GET VS WHAT YOU WON'T GET SECTION
+       ========================================================================= -->
+  <section class="expectations-section" id="expectations">
+    <div class="expectations-container">
+      
+      <div class="expectations-grid">
+        
+        <!-- ================= LEFT COLUMN: WHAT YOU'LL GET ================= -->
+        <div class="expectation-col col-positive">
+          <h2 class="col-title title-positive">WHAT YOU'LL GET</h2>
+          
+          <div class="expectation-box box-positive">
+            
+            <div class="expectation-item">
+              <i class="fa-solid fa-circle-check item-icon icon-positive"></i>
+              <div class="item-content">
+                <h3 class="item-title">A COMPLETE THUMBNAIL STRATEGY</h3>
+                <p class="item-desc">A DATA-DRIVEN THUMBNAIL STRATEGY, BUILT WITH PSYCHOLOGY-BACKED TECHNIQUES TO GRAB VIEWERS' ATTENTION AND GET HIGHER CTR.</p>
+              </div>
+            </div>
+
+            <div class="expectation-item">
+              <i class="fa-solid fa-circle-check item-icon icon-positive"></i>
+              <div class="item-content">
+                <h3 class="item-title">DEEP RESEARCH BEFORE DESIGNING</h3>
+                <p class="item-desc">AFTER RECEIVING YOUR BRIEF, I CONDUCT IN-DEPTH RESEARCH TO ENSURE YOUR THUMBNAIL IS PERFECTLY TAILORED FOR YOUR NICHE.</p>
+              </div>
+            </div>
+
+            <div class="expectation-item">
+              <i class="fa-solid fa-circle-check item-icon icon-positive"></i>
+              <div class="item-content">
+                <h3 class="item-title">3 VARIATIONS FOR EACH THUMBNAIL</h3>
+                <p class="item-desc">FOR EVERY TOPIC YOU PROVIDE, I'LL DESIGN 3 DISTINCT VARIATIONS SO WE CAN TEST DIFFERENT STYLES TO ACHIEVE THE HIGHEST POSSIBLE CTR (A/B TEST).</p>
+              </div>
+            </div>
+
+            <div class="expectation-item">
+              <i class="fa-solid fa-circle-check item-icon icon-positive"></i>
+              <div class="item-content">
+                <h3 class="item-title">REDESIGN UNDERPERFORMING THUMBNAILS</h3>
+                <p class="item-desc">IF A THUMBNAIL GETS &lt;5% CTR, I'LL REDESIGN IT PROMPTLY AT NO EXTRA COST — EVEN IF IT WAS AN A/B TEST.</p>
+              </div>
+            </div>
+
+            <div class="box-callout callout-positive">
+              <p class="callout-sub">AND IF YOU DON'T GET ALL OF THESE</p>
+              <p class="callout-main">SIMPLY DO NOT PAY ANYTHING</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ================= RIGHT COLUMN: WHAT YOU WON'T GET ================= -->
+        <div class="expectation-col col-negative">
+          <h2 class="col-title title-negative">WHAT YOU WON'T GET</h2>
+          
+          <div class="expectation-box box-negative">
+            
+            <div class="expectation-item">
+              <i class="fa-solid fa-circle-xmark item-icon icon-negative"></i>
+              <div class="item-content">
+                <h3 class="item-title">GUARANTEED RESULTS</h3>
+                <p class="item-desc">YOUTUBE IS AN ITERATIVE GAME AND A LONG-TERM JOURNEY. A LONG-TERM MINDSET IS ESSENTIAL AND WE MUST TEST UNTIL WE WIN. IF ANY DESIGNER TELLS YOU THEY CAN GUARANTEE RESULTS, THEY ARE 100% LYING.</p>
+              </div>
+            </div>
+
+            <div class="expectation-item">
+              <i class="fa-solid fa-circle-xmark item-icon icon-negative"></i>
+              <div class="item-content">
+                <h3 class="item-title">IMPRESSIONS &amp; REACH</h3>
+                <p class="item-desc">MAKE SURE THE PROBLEM YOU'RE SOLVING IS CTR. IF YOUR METADATA, TITLE, AND PACKAGING AREN'T ATTRACTING IMPRESSIONS, EVEN THE BEST THUMBNAIL CANNOT HELP.</p>
+              </div>
+            </div>
+
+            <div class="expectation-item">
+              <i class="fa-solid fa-circle-xmark item-icon icon-negative"></i>
+              <div class="item-content">
+                <h3 class="item-title">VIDEO RETENTION RESULTS</h3>
+                <p class="item-desc">AUDIENCE RETENTION IS THE VIDEO EDITOR'S MISSION. THUMBNAILS GET VIEWERS TO CLICK; YOUR EDITING KEEPS THEM WATCHING. PLEASE MAKE SURE YOUR VIDEO EDITOR IS EXPERIENCED ENOUGH FOR THIS MISSION.</p>
+              </div>
+            </div>
+
+            <div class="expectation-item">
+              <i class="fa-solid fa-circle-xmark item-icon icon-negative"></i>
+              <div class="item-content">
+                <h3 class="item-title">MORE SUBSCRIBERS OR WATCH HOURS</h3>
+                <p class="item-desc">I AM A THUMBNAIL DESIGNER, NOT A VIDEO EDITOR. IF THE VIDEO IS BORING, NO ONE WILL WATCH OR SUBSCRIBE. VIEWERS SUBSCRIBE IF THEY LOVE THE CONTENT AND WANT MORE. THAT IS THE CONTENT AND EDITOR'S MISSION.</p>
+              </div>
+            </div>
+
+            <div class="box-callout callout-negative">
+              <p class="callout-sub">AS I TOLD YOU</p>
+              <p class="callout-main">I AM A <span class="badge-highlight">THUMBNAIL</span> DESIGNER..</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. FOOTER HERO WITH PROFESSIONAL BUTTON ARRANGEMENT
+       ========================================================================= -->
+  <section class="footer-hero">
+    <div class="footer-overlay">
+      <!-- Primary Highlight CTA: BOOK A CALL (Matching Top Button) -->
+      <a class="hero-btn footer-book-btn" href="https://calendly.com/muhammadhassany/30min" target="_blank" rel="noopener noreferrer">
+        BOOK A CALL
+      </a>
+
+      <!-- Dual Row: Proof & Portfolio Results -->
+      <div class="btn-dual-row">
+        <button class="btn-action btn-proof" onclick="openModal('reviews')">
+          <i class="fa-solid fa-star"></i>
+          <span>Reviews</span>
+        </button>
+        <button class="btn-action btn-proof" onclick="openModal('results')">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Results</span>
+        </button>
+      </div>
+
+      <!-- Dual Row: Direct Contact Channels -->
+      <div class="btn-dual-row">
+        <a class="btn-action btn-contact btn-whatsapp" href="https://wa.me/201204457813" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </a>
+        <a class="btn-action btn-contact btn-email" href="mailto:muhammadhassanythumb@gmail.com">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Email</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. SITE COPYRIGHT (TINY FOOTER TEXT)
+       ========================================================================= -->
+  <footer class="site-footer-copyright">
+    <p>&copy; 2026 Muhammad Hassany. All rights reserved.</p>
+  </footer>
+
+  <!-- =========================================================================
+       POPUP LIGHTBOX / MODAL
+       ========================================================================= -->
+  <div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box">
+      <button class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i> Close</button>
+      <img id="modalImg" src="" alt="Proof Screenshot Full Detail" />
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // WALL OF WINS - CLOUDINARY IMAGES ARRAY
+    // -------------------------------------------------------------------------
+    // To add more proof screenshots in the future, simply paste a new URL below!
+    // Optimized with f_auto,q_auto for lightning-fast lightweight loading.
+    // =========================================================================
+    const wallOfWinsImages = [
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494843/watermarked_img_7890737825730307749_qzbafi.jpg",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494852/watermarked_img_5746644042209406616_g9k7k7.jpg",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494854/watermarked_img_6768348519630919005_u6assa.jpg",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494855/watermarked_img_7296998074008762596_afbdb7.jpg",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494855/watermarked_img_4625808619121601257_k8mq7g.jpg",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494857/Screenshot_4_rbjlga.jpg",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494857/12_xgmhnf.jpg",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494857/32_zaumvb.png",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494857/76_wls3ai.jpg",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494858/211_l0htts.jpg",
+      "https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792494858/64_jqwh3n.jpg"
+    ];
+
+    // Render multi-column infinite scrolling track
+    function renderWallOfWins() {
+      const container = document.getElementById('wallColumns');
+      if (!container) return;
+
+      const numCols = 4;
+      const cols = Array.from({ length: numCols }, () => []);
+
+      // Distribute images evenly across the 4 columns
+      wallOfWinsImages.forEach((img, idx) => {
+        cols[idx % numCols].push(img);
+      });
+
+      // Ensure each column has at least 3 cards for a rich continuous track
+      cols.forEach((colList, i) => {
+        while (colList.length < 3) {
+          colList.push(wallOfWinsImages[(i + colList.length * 2) % wallOfWinsImages.length]);
+        }
+      });
+
+      // Render each column with duplicated items for seamless infinite scroll
+      container.innerHTML = cols.map((colImages, colIndex) => {
+        // Double the list for infinite -50% loop
+        const loopList = [...colImages, ...colImages];
+        return `
+          <div class="wall-col" data-col="${colIndex}">
+            <div class="wall-col-track">
+              ${loopList.map((src) => `
+                <div class="wall-card" onclick="openDirectModal('${src}')" title="Click to view full receipt">
+                  <img 
+                    src="${src}" 
+                    alt="Client Channel Proof Receipt" 
+                    loading="lazy" 
+                    decoding="async" 
+                  />
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    renderWallOfWins();
+
+    // =========================================================================
+    // MODAL / LIGHTBOX CONTROLLER
+    // =========================================================================
+    const modalImgs = { 
+      results: 'https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792458756/Results_mwbbcc.jpg', 
+      reviews: 'https://res.cloudinary.com/h74mxqsb/image/upload/f_auto,q_auto/v1792458761/Reviews_dkwuy4.jpg' 
+    };
+
+    function openModal(k) { 
+      openDirectModal(modalImgs[k]);
+    }
+
+    function openDirectModal(src) {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modalImg');
+      if (modal && modalImg) {
+        modalImg.src = src; 
+        modal.classList.add('active'); 
+        document.body.style.overflow = 'hidden'; 
+      }
+    }
+
+    function closeModal() { 
+      const modal = document.getElementById('modal');
+      if (modal) {
+        modal.classList.remove('active'); 
+        document.body.style.overflow = ''; 
+      }
+    }
+
+    document.addEventListener('keydown', e => { 
+      if (e.key === 'Escape') closeModal(); 
+    });
+
+    // Smooth Scroll Reveal Animation for My Process
+    const processObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const header = entry.target.querySelector('.process-header');
+          const cards = entry.target.querySelectorAll('.process-card');
+          if (header) header.classList.add('revealed');
+          cards.forEach(card => card.classList.add('revealed'));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    const processSection = document.getElementById('process');
+    if (processSection) {
+      processObserver.observe(processSection);
+    }
+
+    // Smooth Scroll Reveal Animation for What You'll Get vs What You Won't Get
+    const expectationsObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const cols = entry.target.querySelectorAll('.expectation-col');
+          cols.forEach(col => col.classList.add('revealed'));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    const expectationsSection = document.getElementById('expectations');
+    if (expectationsSection) {
+      expectationsObserver.observe(expectationsSection);
+    }
+
+    // Disable Right Click (except on mailto links)
+    document.addEventListener('contextmenu', function (e) {
+      if (e.target.closest('a[href^="mailto:"]')) return;
+      e.preventDefault();
+    });
+
+    // Disable image dragging
+    document.addEventListener('dragstart', function (e) {
+      if (e.target && e.target.tagName === 'IMG') { 
+        e.preventDefault(); 
+      }
+    });
+  </script>
+</body>
+
+</html>
